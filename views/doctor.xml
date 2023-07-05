@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<record id="hospital_doctor_action" model="ir.actions.act_window" >
+       <field name="name">Doctors</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">hospital.doctor</field>
+       <field name="view_mode">tree,form</field>
+       <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+               Create your first doctor  !
+            </p>
+        </field>
+    </record>
+
+   <record model="ir.ui.view" id="doctor_tree">
+        <field name="name">doctor list</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="doctor_id"/>
+
+            <field name="gender"/>
+            <field name="specialization"/>
+        </tree>
+        </field>
+   </record>
+
+   <record id="hospital_doctor_form_view" model="ir.ui.view">
+        <field name="name">hospital_doctor_form_view</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+        <form string="create doctor" >
+            <group> 
+                    <group>
+                        <field name="name"/>
+                        <field name="gender"/>
+                    </group>
+                    <group>
+                        <field name="specialization"/>
+                        <field name="doctor_id"/>
+                    </group>
+            </group>    
+            <notebook>
+                    <page name="doc_appointment" string="doctors's appointments">
+                        <field name="appointments">
+                            <tree>
+                               
+                                <field name="patient_id" />
+                                <field name="gender" />
+                                <field name="appointment_date" />
+                                <field name="booking_date" />
+                                </tree>
+                        </field>
+                    </page> 
+            </notebook>
+         </form>
+      </field>
+   </record>
+
+</odoo>
+
+
+

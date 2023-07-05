@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<menuitem name="hospital" id="hospital_menu"/>
+	<menuitem name="doctors" id="doctors_menu" parent="hospital_menu"/>
+		<menuitem name="doctor" id="doctor_menu" parent="doctors_menu" action="hospital_doctor_action"/>
+
+	<menuitem name="appointment" id="patient_appointment_menu" parent="hospital_menu"/>
+		<menuitem name="appointments" id="patient_appointments_menu" parent="patient_appointment_menu" action="hospital_appointment_action"/>
+		<menuitem name="create appointment" id="create_appointment_menu" parent="patient_appointment_menu" action="hospital_appointment_action"/>
+
+	<menuitem name="patients" id="patient_details_menu" parent="hospital_menu"/>
+		<menuitem name="patient" id="patient_menu" parent='patient_details_menu' action="hospital_patient_action"/>
+
+	<menuitem name="departments" id="departments_menu" parent="hospital_menu"/>
+		<menuitem name="department" id="department_menu" parent="departments_menu" action="hospital_deaprtment_action"/>
+	
+</odoo>
