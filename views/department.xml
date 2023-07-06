@@ -12,4 +12,43 @@
             </p>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="department_tree">
+        <field name="name">department list</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+        </field>
+   </record>
+
+   <record id="hospital_department_form_view" model="ir.ui.view">
+        <field name="name">hospital_department_form_view</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+        <form  >
+            <group> 
+                    <group>
+                        <field name="name"/>
+                        
+                    </group>
+            </group>    
+            <notebook>
+                    <page name="doc_appointment" string="appointments">
+                        <field name="appointments">
+                            <tree>
+                               
+                                <field name="patient_id" />
+                                <field name="gender" />
+                                <field name="appointment_date" />
+                                <field name="booking_date" />
+                                </tree>
+                        </field>
+                    </page> 
+            </notebook>
+         </form>
+      </field>
+   </record>
 </odoo>

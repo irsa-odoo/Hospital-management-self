@@ -6,6 +6,9 @@ class HospitalDepartment(models.Model):
 
 	name=fields.Char(string="Department name",required=True)
 	description=fields.Char(string="Department details")
+	appointments=fields.One2many('hospital.appointment','doctor_id',string='appointments')
+
+	
 	
 
 
