@@ -33,7 +33,7 @@
                     <group>
                         <field name="name"/>
                         <field name="doctor_id"/>
-                        
+                        <field name="description"/>
                     </group>
             </group>    
             <notebook>
