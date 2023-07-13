@@ -5,7 +5,7 @@
     	<field name="name">patients</field>
     	<field name="type">ir.actions.act_window</field>
     	<field name="res_model">hospital.patient</field>
-    	<field name="view_mode">tree,form</field>
+    	<field name="view_mode">tree,form,kanban</field>
     	<field name="help" type="html">
         	<p class="o_view_nocontent_smiling_face">
           		Create your first patient !
@@ -68,6 +68,37 @@
 	            </notebook>
 	        </sheet>
         </form>
+        </field>
+    </record>
+
+    <record id="patient_kanban" model="ir.ui.view">
+        <field name="name">hospital_patient_kanban</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="gender">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <h1 class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </h1>
+                                <ul>
+                                    <li>Age :
+                                        <field name="age"/>
+                                    </li>
+                                    <li>Gender :
+                                        <field name="gender"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 

@@ -5,7 +5,7 @@
        <field name="name">Doctors</field>
        <field name="type">ir.actions.act_window</field>
        <field name="res_model">hospital.doctor</field>
-       <field name="view_mode">tree,form</field>
+       <field name="view_mode">tree,form,kanban</field>
        <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                Create your first doctor  !
@@ -17,10 +17,9 @@
         <field name="name">doctor list</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
-        <tree>
+        <tree sample="1">
             <field name="name"/>
-            <field name="doctor_id"/>
-
+            <field name="doctor_id" string="Doctor"/>
             <field name="gender"/>
             <field name="specialization"/>
         </tree>
@@ -58,6 +57,39 @@
          </form>
       </field>
    </record>
+
+   <record id="doctor_kanban" model="ir.ui.view">
+        <field name="name">hospital_doctor_kanban</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="doctor_id">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="specialization"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <h1 class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </h1>
+                                <ul>
+                                    <li>Gender :
+                                        <field name="gender"/>
+                                    </li>
+                                    <li>Specialization :
+                                        <field name="specialization"/>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 
 </odoo>
 

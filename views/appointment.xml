@@ -29,7 +29,7 @@
                 <field name="doctor_id" />
                 <field name="appointment_date"/>
                 <field name="booking_date"/>
-                <field name="state" widget="badge" />
+                <field name="state" widget="badge" options="{'color_field': 'color'}"/>
             </tree>
         </field>
     </record>
