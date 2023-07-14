@@ -50,14 +50,14 @@
 	                      <page name="appointments list" string="appointments">
 	                          <field name="appointments">
 	                              <tree>
-	                                <field name="patient_id" />
+	                                <field name="doctor_id" />
 	                                <field name="appointment_date"/>
 	                                <field name="booking_date" />
 	                              </tree>
 	                              <form string="">
 	                                <sheet>
 	                                  <group> 
-	                                      <field name="patient_id"/>
+	                                      <field name="doctor_id"/>
 	                                      <field name="appointment_date"/>
 	                                      <field name="booking_date" />
 	                                  </group>
