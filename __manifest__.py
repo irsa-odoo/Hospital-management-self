@@ -12,7 +12,10 @@
      'views/appointment.xml',
      'views/patient.xml',
      'views/department.xml',
-     'views/menu.xml'
+     'views/menu.xml',
+     'report/patient_report.xml',
+     'report/doctor_report.xml',
+     'report/report.xml'
      
     ]
 }

@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import date
+from odoo.exceptions import ValidationError
 
 class HospitalAppointment(models.Model):
    _name = 'hospital.appointment'
@@ -18,6 +19,12 @@ class HospitalAppointment(models.Model):
       ('cancelled','Cancelled'),
    ],string='state',required=True,default='draft')
    doctor_id=fields.Many2one('hospital.doctor',string='doctor')
+
+   @api.constrains('appointment_date', 'booking_date')
+   def _check_date_validation(self):
+      for record in self:
+         if record.booking_date < record.appointment_date:
+            raise ValidationError('Booking date should not be previous date.')
 
    def action_cancel (self):
       self.state  ='cancelled'

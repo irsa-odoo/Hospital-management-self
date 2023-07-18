@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from datetime import date
 import math
+from odoo.exceptions import ValidationError
 
 class HospitalPatient(models.Model):
    _name = 'hospital.patient'
@@ -13,6 +14,7 @@ class HospitalPatient(models.Model):
    birth_date=fields.Date(string='date of birth')
    active=fields.Boolean(string='Active',default=True)
    appointments=fields.One2many('hospital.appointment','patient_id',string='appointments')
+   appointment_count=fields.Integer(string='appointment count', compute='_compute_appointment_count')
   
 
    @api.depends('birth_date')
@@ -24,7 +26,20 @@ class HospitalPatient(models.Model):
    		else:
    			rec.age=0
 
-   
+   @api.constrains('age')
+   def _check_doctor_age(self):
+      for record in self:
+         if record.age <= 0:
+            raise ValidationError('Age must be greater than 0')
+
+
+
+   def _compute_appointment_count(self):
+      for rec in self:
+         if rec.id:
+            rec.appointment_count = rec.env['hospital.appointment'].search_count([('p_id', '=', rec.id)])
+         else:
+            rec.appointment_count = 0
 
 
    

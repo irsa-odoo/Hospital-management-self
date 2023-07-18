@@ -1,0 +1,61 @@
+<odoo>
+
+    <template id="patient_report_detail">
+        <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+            <h1>Patient details report</h1>
+                <div style="float:left;">
+                    <h2>
+                        <strong>patient name:</strong>
+                        <span t-field="o.name"/>
+                    </h2>
+
+                    <h2>
+                        <strong>patient age :</strong>
+                        <span t-field="o.age"/>
+                    </h2>
+                    <h2>
+                        <strong>patient gender :</strong>
+                        <span t-field="o.gender"/>
+                    </h2>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>patient's appointments</th>
+                        </tr>
+                        <tr>
+                            <th>appointment time</th>
+                            <th>booking date</th>
+                            <th>state</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="appointments" t-value="o.mapped('appointments')"/>
+                            <tr t-foreach="appointments" t-as="appointments">
+                                <td>
+                                    <span t-field="appointments.appointment_date"/>
+                                </td>
+                                <td>
+                                    <span t-field="appointments.booking_date"/>
+                                </td> 
+                                <td>
+                                    <span t-field="appointments.state"/>
+                                </td> 
+                            </tr>
+                                 
+                    </tbody>
+       
+                </table>
+
+            </div>
+        </t>
+        </t>
+        </t>
+  
+     </template>
+
+ 
+</odoo>
