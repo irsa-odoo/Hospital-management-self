@@ -1,5 +1,6 @@
 {
     'name' : 'Hospital Management',
+    'category':'Hospital/appointment',
     'summary': "Hospital Management App",
     'author': "Odoo",
 
@@ -7,6 +8,7 @@
     'installable':True,
 
     'data':[
+     'security/security.xml',
      'security/ir.model.access.csv',
      'views/doctor.xml',
      'views/appointment.xml',
