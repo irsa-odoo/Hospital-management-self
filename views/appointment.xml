@@ -5,7 +5,8 @@
         <field name="name">Appointment</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.appointment</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{'search_default_group_by_patient_id':1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first appointment  !
@@ -50,15 +51,52 @@
         					<field name="patient_id"/>
                             <field name="appointment_date"/>
                             <field name="booking_date"/>
-                            <field name="doctor_id" />
+                            <button type="action" 
+                              name="%(hospital_appointment_action)d" 
+                              string="appointments list" 
+                              confirm="are yo sure to go appointment list ?" 
+                              class="oe_highlight"/>
                         </group>
                         <group>
                         	<field name="description" />
                         	<field name="gender" />
+                            <field name="doctor_id" />
+                            
                         </group>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="hospital_appointment_view_kanban" model="ir.ui.view">
+        <field name="name">hospital.appointment.view.kanban</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name="patient_id"/>
+                <field name="gender" />
+                <field name="doctor_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                          <div t-attf-class="oe_kanban_details">
+                              <ul>
+                               <li>
+                                   name :<field name="patient_id"/>
+                               </li>
+                               <li>
+                                   doctor :<field name="doctor_id"/>
+                               </li>
+                               <li>
+                                   gender :<field name="gender"/>
+                               </li>
+                              </ul>
+                          </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
